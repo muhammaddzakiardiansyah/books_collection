@@ -1,0 +1,4138 @@
+{
+	"info": {
+		"_postman_id": "2875e4a3-63a8-48ad-b49b-b1bdc6fe89dc",
+		"name": "Books Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25153135"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abimantra\",\r\n    \"email\": \"abimantra@gmail.com\",\r\n    \"password\": \"Abimantra20#\",\r\n    \"password_confirmation\": \"Abimantra20#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI}}/auth/register",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "# register\n\nfield :\n\nname with validation required, string, min 3, max 100,\n\nemail with validation required, email, unique\n\npassword with validation required, string, min 8, regex:a-z, A-Z, 0-9, !@#$%^&\\* confirm\n\nregistration will create default user role"
+					},
+					"response": [
+						{
+							"name": "Register success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"abimantra\",\r\n    \"email\": \"abimantra@gmail.com\",\r\n    \"password\": \"Abimantra20#\",\r\n    \"password_confirmation\": \"Abimantra20#\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/auth/register",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:24:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Register successfully\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"name\": \"abimantra\",\n        \"email\": \"abimantra@gmail.com\",\n        \"id\": 61601,\n        \"updated_at\": \"2024-12-08T13:24:19.000000Z\",\n        \"created_at\": \"2024-12-08T13:24:19.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Register failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\",\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"password_confirmation\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/auth/register",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:31:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": [\n        \"The name field is required.\"\n    ],\n    \"email\": [\n        \"The email field is required.\"\n    ],\n    \"password\": [\n        \"The password field is required.\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Perbarui variabel environment\r",
+									"pm.environment.set(\"AUTH_TOKEN\", response.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "//  role user\r\n// {\r\n//     \"email\": \"azmya@gmail.com\",\r\n//     \"password\": \"Azmya20#\"\r\n// }\r\n// role admin\r\n// {\r\n//     \"email\": \"anggelika@gmail.com\",\r\n//     \"password\": \"Anggelika13#\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI}}/auth/login",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "# login\n\nfield :\n\nemail with validation required, email,\n\npassword with validation required,\n\nif login success will returned jwt\n\nTokens in the environment do not need to be filled in manually because when the login is successful, they will be filled in automatically with this script:\n\nconst response = pm.response.json();  \nenvironmentpm.environment.set(\"AUTH_TOKEN\", response.token);"
+					},
+					"response": [
+						{
+							"name": "Login success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anggelika@gmail.com\",\r\n    \"password\": \"Anggelika17#\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/auth/login",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:41:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": 69383,\n        \"name\": \"anggelika\",\n        \"email\": \"anggelika@gmail.com\",\n        \"email_verified_at\": null,\n        \"role\": \"admin\",\n        \"created_at\": \"2024-12-07T09:09:33.000000Z\",\n        \"updated_at\": \"2024-12-07T09:09:33.000000Z\"\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3MzM2NjUzMTAsImV4cCI6MTczMzY2ODkxMCwibmJmIjoxNzMzNjY1MzEwLCJqdGkiOiIyUUU0VW9lbzB5akdSNVZ5Iiwic3ViIjoiNjkzODMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.SGfLJ4vd9BKQAL2pPwwpHaWsW7r1-H1eD4vQa_SoeSA\"\n}"
+						},
+						{
+							"name": "Login failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anggelik@gmail.com\",\r\n    \"password\": \"Anggelika17#\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/auth/login",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:42:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Email or Password Incorret\",\n    \"statusCode\": 409\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/auth/logout",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "# logout\n\nfor request logout just required token"
+					},
+					"response": [
+						{
+							"name": "Logout success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/auth/logout",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:44:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logout successfully\",\n    \"statusCode\": 200\n}"
+						},
+						{
+							"name": "Logout failed if token expired or destroyed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/auth/logout",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:45:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoint Authentication provide 3 request\n\n- Register\n    \n- Login\n    \n- Logout"
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Find All Books",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/books/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"books",
+								""
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "ilmiah",
+									"description": "search by, book_name, users.name, description. categories.category_name",
+									"disabled": true
+								},
+								{
+									"key": "order-by",
+									"value": "desc",
+									"description": "only input asc or desc",
+									"disabled": true
+								}
+							]
+						},
+						"description": "# find all books\n\nif not with request params find all book will returned all data book order by created_at asc\n\nif with request params find all books will returned data book as requested paginate 10\n\nq as query search with specifiet search by book_name, users.name, description, categories.category_name paginate 10\n\norder-by with specifiet only input asc or desc"
+					},
+					"response": [
+						{
+							"name": "Find All Books success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "ilmiah",
+											"description": "search by, book_name, users.name, description. categories.category_name",
+											"disabled": true
+										},
+										{
+											"key": "order-by",
+											"value": "desc",
+											"description": "only input asc or desc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 13:49:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find all books successfully\",\n    \"statucCode\": 200,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 18245,\n                \"book_name\": \"Accusamus ullam a quam eum non provident sint.\",\n                \"user_id\": 38509,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Autem delectus suscipit reiciendis et enim ut id. Neque ullam aliquam officiis numquam. Ipsa sint et sequi et vero et. Voluptas laborum alias officia temporibus nesciunt eum laborum eum.\\\\nDolorem tempora voluptatem repellat nihil. Adipisci sed sequi omnis incidunt qui. Distinctio et eum repudiandae quia. Distinctio similique repellendus neque reiciendis ut laboriosam tenetur.\\\\nSint itaque corporis et ut libero deleniti voluptatem. Ex expedita autem perspiciatis ea. Veniam asperiores velit velit sunt aliquid necessitatibus et voluptates. Et ea fuga deleniti reprehenderit. Porro aut ab debitis eos ipsa delectus rerum.\",\n                \"category_id\": 67599,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 38509,\n                    \"name\": \"Mrs. Magdalena Hahn\",\n                    \"email\": \"krajcik.barry@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 67599,\n                        \"category_name\": \"Atlas\"\n                    }\n                ]\n            },\n            {\n                \"id\": 24511,\n                \"book_name\": \"Expedita et ut quasi.\",\n                \"user_id\": 27343,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Aliquid sint voluptatum reiciendis voluptatibus ea. Et quia ea cumque dolorem reprehenderit blanditiis. Facilis fugiat nihil et est aut dolor.\\\\nMaiores saepe possimus omnis veniam facere autem adipisci quia. Enim expedita quia quia voluptatem dolores nemo. At perferendis id enim voluptatem ut.\\\\nRerum qui et aut quo molestiae suscipit. Blanditiis repudiandae deleniti quas cupiditate. Ab eos dicta molestiae consequatur quo.\",\n                \"category_id\": 61456,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 27343,\n                    \"name\": \"Abagail Kreiger\",\n                    \"email\": \"wcassin@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 61456,\n                        \"category_name\": \"Komik\"\n                    }\n                ]\n            },\n            {\n                \"id\": 25286,\n                \"book_name\": \"Dolorum ut beatae qui quia fuga perspiciatis inventore.\",\n                \"user_id\": 75677,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Omnis provident incidunt atque eius fuga quis quidem dolores. A hic omnis reiciendis nostrum autem. Laudantium fugit accusantium rem vero dolor eaque.\\\\nRem voluptatum molestias est et vitae adipisci voluptas quo. Veniam praesentium earum autem sed. Est dignissimos occaecati et rerum necessitatibus aut molestiae possimus. Aut aliquam odio harum blanditiis non rerum.\\\\nVoluptas voluptates error iste illo rerum. Dolorem ad et repellat quis sit. Incidunt et blanditiis impedit ipsa.\",\n                \"category_id\": 67599,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 75677,\n                    \"name\": \"Ms. Brianne Jones V\",\n                    \"email\": \"beatrice88@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 67599,\n                        \"category_name\": \"Atlas\"\n                    }\n                ]\n            },\n            {\n                \"id\": 28309,\n                \"book_name\": \"Nesciunt molestiae laboriosam ad possimus.\",\n                \"user_id\": 75677,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Ad repellat non maxime voluptatum facilis laudantium. Dolores necessitatibus nostrum quasi soluta sed nulla id. Nihil ab cum corporis ea.\\\\nQui corrupti ex et necessitatibus magnam ullam. Nemo modi ut eum vitae autem voluptatibus magni.\\\\nEt omnis quod saepe et. Sit magni culpa quia voluptatibus quis. Culpa perspiciatis quia harum.\",\n                \"category_id\": 84273,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 75677,\n                    \"name\": \"Ms. Brianne Jones V\",\n                    \"email\": \"beatrice88@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 84273,\n                        \"category_name\": \"Novel\"\n                    }\n                ]\n            },\n            {\n                \"id\": 37921,\n                \"book_name\": \"Illo consequatur tempora iste consequatur nulla nisi exercitationem.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"A sed nam amet ut corporis. Repellendus sit enim vitae sint. Molestias est vitae numquam sequi.\\\\nSint consequatur qui voluptas provident expedita eius aut. Dolorem quia consequatur velit sapiente consequatur voluptas autem aut. Vel fugiat est velit cumque. Asperiores cum quia aut atque aut.\\\\nEt minus sit earum. Beatae quidem occaecati assumenda atque. Et necessitatibus nisi soluta corrupti commodi et odio. Amet et quas est dolor omnis.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 40536,\n                \"book_name\": \"Rem dolores id qui quo.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Occaecati est sit iste. Dolorem omnis vel unde non voluptas quos. Voluptates est ut ut. Perferendis optio numquam quia qui voluptatem distinctio.\\\\nAccusamus molestiae tempora ea. Iure vel temporibus dolor in dolores. Ut ipsam iusto non vel voluptatum saepe nulla. Fugit dicta ea ut non.\\\\nBlanditiis enim facere deleniti est voluptatibus aut aut. Nisi veritatis autem eos. Atque dignissimos dignissimos officia inventore voluptatem incidunt. Laborum autem accusantium consequatur maiores eum.\",\n                \"category_id\": 67599,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 67599,\n                        \"category_name\": \"Atlas\"\n                    }\n                ]\n            },\n            {\n                \"id\": 44741,\n                \"book_name\": \"Magnam iusto fugiat fugiat ipsum unde aut.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Id aut autem voluptatem et alias eaque. Est fugiat natus harum eos molestiae qui et. Enim tempore rerum vitae est.\\\\nVoluptas cupiditate neque sequi ea explicabo tempora. Sit est iusto blanditiis exercitationem consequatur adipisci. Qui ullam ipsum inventore est possimus. Repellat eos reprehenderit nihil doloribus.\\\\nAd architecto placeat repellendus. Et voluptatem et sint exercitationem tenetur sint. Iusto accusamus doloremque consectetur est. Aperiam pariatur eaque omnis sunt ut.\",\n                \"category_id\": 67599,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 67599,\n                        \"category_name\": \"Atlas\"\n                    }\n                ]\n            },\n            {\n                \"id\": 48647,\n                \"book_name\": \"Non deleniti dolor aliquam voluptas perspiciatis officiis.\",\n                \"user_id\": 84115,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Qui odio aperiam facilis illo maxime cupiditate. Porro omnis voluptatem a voluptatibus. Mollitia ut nihil vel iure ipsam corporis.\\\\nCommodi nulla ad nesciunt iure. Molestiae exercitationem excepturi quo aut consectetur cumque libero. Sit rerum vero officiis rerum eos sit eveniet minus. Incidunt optio consequatur impedit asperiores voluptatem earum.\\\\nVeritatis est ducimus nulla odio eos. Ut possimus itaque quo officia repudiandae corrupti facilis.\",\n                \"category_id\": 80101,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 84115,\n                    \"name\": \"Frederique Collins\",\n                    \"email\": \"qsteuber@example.net\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 80101,\n                        \"category_name\": \"Agama\"\n                    }\n                ]\n            },\n            {\n                \"id\": 49557,\n                \"book_name\": \"Et rerum debitis ipsa maiores provident in.\",\n                \"user_id\": 38509,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Dolorem iure sed nobis. Et est voluptatem vel exercitationem delectus. Corrupti autem repellendus laborum et dolorum asperiores illo. Sunt aspernatur quo aperiam. Laborum reiciendis distinctio architecto est assumenda.\\\\nUt dolorem rerum voluptas. Officiis blanditiis pariatur omnis voluptas. Ut voluptatem voluptates eveniet vitae nostrum repellat non ut.\\\\nVeritatis qui natus rerum placeat totam. Accusamus reiciendis quas repellat nostrum quis. Consequatur voluptate commodi doloribus neque expedita magni est. Sint eligendi exercitationem et minus eaque dolore.\",\n                \"category_id\": 50176,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 38509,\n                    \"name\": \"Mrs. Magdalena Hahn\",\n                    \"email\": \"krajcik.barry@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 50176,\n                        \"category_name\": \"Biografi\"\n                    }\n                ]\n            },\n            {\n                \"id\": 49588,\n                \"book_name\": \"Omnis quia quia pariatur architecto.\",\n                \"user_id\": 29432,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Qui quia perferendis quia quo. Et est maxime cum consectetur sint illo. Voluptatem ea sunt doloribus sed voluptatem similique cupiditate. Debitis aspernatur aut itaque aperiam. Officia aut voluptatibus assumenda molestias temporibus est ipsum.\\\\nEos voluptatem impedit necessitatibus nulla iure ea aut. Aspernatur rem qui doloribus incidunt velit qui dicta. Sit soluta illum distinctio possimus fuga deserunt modi eius.\\\\nProvident cum nihil dicta asperiores eaque sint ea qui. Dolorem aliquam et distinctio rerum vitae et non quae.\",\n                \"category_id\": 80101,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 29432,\n                    \"name\": \"Keenan Hoppe II\",\n                    \"email\": \"soledad69@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 80101,\n                        \"category_name\": \"Agama\"\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/v1/books?page=1\",\n        \"from\": 1,\n        \"last_page\": 2,\n        \"last_page_url\": \"http://localhost:8000/api/v1/books?page=2\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/books?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/books?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/books?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": \"http://localhost:8000/api/v1/books?page=2\",\n        \"path\": \"http://localhost:8000/api/v1/books\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 10,\n        \"total\": 20\n    }\n}"
+						},
+						{
+							"name": "Find All Books success with query search categories.category_name = ilmiah",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/?q=ilmiah",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "ilmiah",
+											"description": "search by, book_name, users.name, description. categories.category_name"
+										},
+										{
+											"key": "order-by",
+											"value": "desc",
+											"description": "only input asc or desc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:00:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find all books successfully\",\n    \"statucCode\": 200,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 37921,\n                \"book_name\": \"Illo consequatur tempora iste consequatur nulla nisi exercitationem.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"A sed nam amet ut corporis. Repellendus sit enim vitae sint. Molestias est vitae numquam sequi.\\\\nSint consequatur qui voluptas provident expedita eius aut. Dolorem quia consequatur velit sapiente consequatur voluptas autem aut. Vel fugiat est velit cumque. Asperiores cum quia aut atque aut.\\\\nEt minus sit earum. Beatae quidem occaecati assumenda atque. Et necessitatibus nisi soluta corrupti commodi et odio. Amet et quas est dolor omnis.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 60905,\n                \"book_name\": \"Harum accusamus omnis quis corporis.\",\n                \"user_id\": 97761,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Fuga aut unde autem sed maiores repellendus recusandae. Ipsum illum aut distinctio asperiores rem. Dolores aut qui voluptate. Modi autem dicta iste consequatur.\\\\nEa nesciunt asperiores vitae autem aperiam. Deserunt ut soluta enim ratione eum corrupti eligendi. Culpa aliquid dolores tempora reiciendis aliquam sequi doloremque est. Laboriosam voluptatem voluptate voluptas doloremque aut.\\\\nEveniet et id consequuntur ad. Hic ipsum quasi inventore velit ut laudantium eveniet facere. Et enim soluta tenetur dolorem inventore accusantium. Consequatur voluptatem et debitis ex voluptatem est quaerat.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 97761,\n                    \"name\": \"Ms. Gina Veum IV\",\n                    \"email\": \"emmerich.dylan@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 67601,\n                \"book_name\": \"Dolores omnis sit nihil ipsa exercitationem sit.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Distinctio aut nihil officia fugit quae possimus blanditiis cupiditate. Doloribus sed et quibusdam dolores. Quae perspiciatis cumque non soluta.\\\\nDolores dolore blanditiis ullam earum ut. Animi qui explicabo quo in aperiam ut.\\\\nVitae officia non eos et nulla. Ut quo adipisci rerum veritatis. Esse dignissimos sunt necessitatibus sint sed nemo.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 88474,\n                \"book_name\": \"Odit aut quia quia dolores natus.\",\n                \"user_id\": 66751,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Accusamus repellendus nostrum et. Rerum earum nostrum ut provident ipsa quasi impedit. Ut optio culpa ad voluptatem consectetur.\\\\nAtque eligendi praesentium molestiae nostrum. Molestiae et voluptatum perferendis consequatur odit. Et repudiandae voluptate deleniti doloremque non eveniet.\\\\nNecessitatibus et placeat animi et eaque iste quae earum. Qui ullam impedit corporis minima. Recusandae sapiente illum ab doloremque.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 66751,\n                    \"name\": \"Elaina Christiansen\",\n                    \"email\": \"reinger.evalyn@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 91375,\n                \"book_name\": \"Voluptate harum quia corporis totam eos.\",\n                \"user_id\": 75525,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Asperiores adipisci fugiat quia harum id autem. Nobis cumque architecto molestiae ut praesentium facilis. Autem aliquid aut dolores sit reiciendis aliquid dolor cupiditate. Quia et at in consequatur impedit.\\\\nNam aliquam ratione itaque. Ut voluptate est doloremque quo mollitia repellat. Et sit possimus enim autem corrupti repellendus omnis.\\\\nUt voluptatem dolor in quod qui veritatis qui. Distinctio eligendi expedita dignissimos et rem et. Nulla aut totam unde perspiciatis dolores adipisci quae. Illum dolore dolores quos iusto.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 75525,\n                    \"name\": \"Mrs. Una Green\",\n                    \"email\": \"jacey.schneider@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 84930,\n                \"book_name\": \"Jurnal Penelitian Kota Pekalongan\",\n                \"user_id\": 69383,\n                \"image\": \"http://localhost:8000/storage/book_images/hrCoye0Nu5UiXWQw9exPEOMnS4ch2iMjf2lFtjmz.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/XJaiAo7Tniwl3xraDK8CCKTtZ4EXeOfS0vc4dCGJ.pdf\",\n                \"description\": \"Ini adalah buku biografi tentang perjalanan hidup saya\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-08T02:24:34.000000Z\",\n                \"updated_at\": \"2024-12-08T02:24:34.000000Z\",\n                \"user\": {\n                    \"id\": 69383,\n                    \"name\": \"anggelika\",\n                    \"email\": \"anggelika@gmail.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/v1/books?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/v1/books?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/books?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/v1/books\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 6,\n        \"total\": 6\n    }\n}"
+						},
+						{
+							"name": "Find All Books success with request params order by desc",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/?q=ilmiah&order-by=desc",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "ilmiah",
+											"description": "search by, book_name, users.name, description. categories.category_name"
+										},
+										{
+											"key": "order-by",
+											"value": "desc",
+											"description": "only input asc or desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:01:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find all books successfully\",\n    \"statucCode\": 200,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 84930,\n                \"book_name\": \"Jurnal Penelitian Kota Pekalongan\",\n                \"user_id\": 69383,\n                \"image\": \"http://localhost:8000/storage/book_images/hrCoye0Nu5UiXWQw9exPEOMnS4ch2iMjf2lFtjmz.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/XJaiAo7Tniwl3xraDK8CCKTtZ4EXeOfS0vc4dCGJ.pdf\",\n                \"description\": \"Ini adalah buku biografi tentang perjalanan hidup saya\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-08T02:24:34.000000Z\",\n                \"updated_at\": \"2024-12-08T02:24:34.000000Z\",\n                \"user\": {\n                    \"id\": 69383,\n                    \"name\": \"anggelika\",\n                    \"email\": \"anggelika@gmail.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 37921,\n                \"book_name\": \"Illo consequatur tempora iste consequatur nulla nisi exercitationem.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"A sed nam amet ut corporis. Repellendus sit enim vitae sint. Molestias est vitae numquam sequi.\\\\nSint consequatur qui voluptas provident expedita eius aut. Dolorem quia consequatur velit sapiente consequatur voluptas autem aut. Vel fugiat est velit cumque. Asperiores cum quia aut atque aut.\\\\nEt minus sit earum. Beatae quidem occaecati assumenda atque. Et necessitatibus nisi soluta corrupti commodi et odio. Amet et quas est dolor omnis.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 60905,\n                \"book_name\": \"Harum accusamus omnis quis corporis.\",\n                \"user_id\": 97761,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Fuga aut unde autem sed maiores repellendus recusandae. Ipsum illum aut distinctio asperiores rem. Dolores aut qui voluptate. Modi autem dicta iste consequatur.\\\\nEa nesciunt asperiores vitae autem aperiam. Deserunt ut soluta enim ratione eum corrupti eligendi. Culpa aliquid dolores tempora reiciendis aliquam sequi doloremque est. Laboriosam voluptatem voluptate voluptas doloremque aut.\\\\nEveniet et id consequuntur ad. Hic ipsum quasi inventore velit ut laudantium eveniet facere. Et enim soluta tenetur dolorem inventore accusantium. Consequatur voluptatem et debitis ex voluptatem est quaerat.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 97761,\n                    \"name\": \"Ms. Gina Veum IV\",\n                    \"email\": \"emmerich.dylan@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 67601,\n                \"book_name\": \"Dolores omnis sit nihil ipsa exercitationem sit.\",\n                \"user_id\": 10097,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Distinctio aut nihil officia fugit quae possimus blanditiis cupiditate. Doloribus sed et quibusdam dolores. Quae perspiciatis cumque non soluta.\\\\nDolores dolore blanditiis ullam earum ut. Animi qui explicabo quo in aperiam ut.\\\\nVitae officia non eos et nulla. Ut quo adipisci rerum veritatis. Esse dignissimos sunt necessitatibus sint sed nemo.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 10097,\n                    \"name\": \"Miss Sibyl Robel Sr.\",\n                    \"email\": \"kiarra.moore@example.com\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 88474,\n                \"book_name\": \"Odit aut quia quia dolores natus.\",\n                \"user_id\": 66751,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Accusamus repellendus nostrum et. Rerum earum nostrum ut provident ipsa quasi impedit. Ut optio culpa ad voluptatem consectetur.\\\\nAtque eligendi praesentium molestiae nostrum. Molestiae et voluptatum perferendis consequatur odit. Et repudiandae voluptate deleniti doloremque non eveniet.\\\\nNecessitatibus et placeat animi et eaque iste quae earum. Qui ullam impedit corporis minima. Recusandae sapiente illum ab doloremque.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 66751,\n                    \"name\": \"Elaina Christiansen\",\n                    \"email\": \"reinger.evalyn@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            },\n            {\n                \"id\": 91375,\n                \"book_name\": \"Voluptate harum quia corporis totam eos.\",\n                \"user_id\": 75525,\n                \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n                \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n                \"description\": \"Asperiores adipisci fugiat quia harum id autem. Nobis cumque architecto molestiae ut praesentium facilis. Autem aliquid aut dolores sit reiciendis aliquid dolor cupiditate. Quia et at in consequatur impedit.\\\\nNam aliquam ratione itaque. Ut voluptate est doloremque quo mollitia repellat. Et sit possimus enim autem corrupti repellendus omnis.\\\\nUt voluptatem dolor in quod qui veritatis qui. Distinctio eligendi expedita dignissimos et rem et. Nulla aut totam unde perspiciatis dolores adipisci quae. Illum dolore dolores quos iusto.\",\n                \"category_id\": 95224,\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"user\": {\n                    \"id\": 75525,\n                    \"name\": \"Mrs. Una Green\",\n                    \"email\": \"jacey.schneider@example.org\"\n                },\n                \"category\": [\n                    {\n                        \"id\": 95224,\n                        \"category_name\": \"Ilmiah\"\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/v1/books?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/v1/books?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/books?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/v1/books\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 6,\n        \"total\": 6\n    }\n}"
+						},
+						{
+							"name": "Find All Books failed with token expired or not input token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_T",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/?q=ilmiah&order-by=desc",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "ilmiah",
+											"description": "search by, book_name, users.name, description. categories.category_name"
+										},
+										{
+											"key": "order-by",
+											"value": "desc",
+											"description": "only input asc or desc"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:03:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Find Detail Book",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/books/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "18247",
+									"description": "id book"
+								}
+							]
+						},
+						"description": "# find detail book\n\nrequest find detail book by id book"
+					},
+					"response": [
+						{
+							"name": "Find Detail Book success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "18245",
+											"description": "id book"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:12:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find detail book successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": 18245,\n        \"book_name\": \"Accusamus ullam a quam eum non provident sint.\",\n        \"user_id\": 38509,\n        \"image\": \"http://localhost:8000/storage/book_images/fake-image.jpg\",\n        \"book_file\": \"http://localhost:8000/storage/book_files/fake-book-file.pdf\",\n        \"description\": \"Autem delectus suscipit reiciendis et enim ut id. Neque ullam aliquam officiis numquam. Ipsa sint et sequi et vero et. Voluptas laborum alias officia temporibus nesciunt eum laborum eum.\\\\nDolorem tempora voluptatem repellat nihil. Adipisci sed sequi omnis incidunt qui. Distinctio et eum repudiandae quia. Distinctio similique repellendus neque reiciendis ut laboriosam tenetur.\\\\nSint itaque corporis et ut libero deleniti voluptatem. Ex expedita autem perspiciatis ea. Veniam asperiores velit velit sunt aliquid necessitatibus et voluptates. Et ea fuga deleniti reprehenderit. Porro aut ab debitis eos ipsa delectus rerum.\",\n        \"category_id\": 67599,\n        \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"updated_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"user\": {\n            \"id\": 38509,\n            \"name\": \"Mrs. Magdalena Hahn\",\n            \"email\": \"krajcik.barry@example.org\"\n        },\n        \"category\": [\n            {\n                \"id\": 67599,\n                \"category_name\": \"Atlas\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Find Detail Book failed id book not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1824",
+											"description": "id book"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:12:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "book_name",
+									"value": "Jurnal Penelitian Kota Pekalongan part 2",
+									"description": "required, string, min 3 max 100, unique",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "required, mimes:jpg,jpeg,png,svg, max size 2048",
+									"type": "file",
+									"src": "/C:/Users/litle fox/Downloads/untuk-latihan.jpeg"
+								},
+								{
+									"key": "book_file",
+									"description": "required, mimes:pdf,docx,pptx,txt",
+									"type": "file",
+									"src": "/C:/Users/litle fox/Downloads/untuk-latihan.pdf"
+								},
+								{
+									"key": "description",
+									"value": "Ini adalah buku biografi tentang perjalanan hidup saya",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "95224",
+									"description": "required, integer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/books/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"books",
+								""
+							]
+						},
+						"description": "# add book\n\nfield :\n\nbook_name with validation required, string, min 3, max 100, unique,\n\nimage wirh validation required, mimes:jpg, jpeg, png, svg max size 2048\n\nbook_file with validation required, mimes:pdf,docx,pptx,txt,\n\ndescription with validation required,\n\ncategory_id required, integer"
+					},
+					"response": [
+						{
+							"name": "Add Book success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "book_name",
+											"value": "Jurnal Penelitian Kota Pekalongan part 2",
+											"description": "required, string, min 3 max 100, unique",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "required, mimes:jpg,jpeg,png,svg, max size 2048",
+											"type": "file",
+											"src": "/C:/Users/litle fox/Downloads/untuk-latihan.jpeg"
+										},
+										{
+											"key": "book_file",
+											"description": "required, mimes:pdf,docx,pptx,txt",
+											"type": "file",
+											"src": "/C:/Users/litle fox/Downloads/untuk-latihan.pdf"
+										},
+										{
+											"key": "description",
+											"value": "Ini adalah buku biografi tentang perjalanan hidup saya",
+											"description": "required",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "95224",
+											"description": "required, integer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URI}}/books/",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:35:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Add book successfully\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"book_name\": \"Jurnal Penelitian Kota Pekalongan part 2\",\n        \"image\": \"http://localhost:8000/storage/book_images/lGDV8Ykebswa5Y15wK54ymjDgqicR6eM7BvIEihD.jpg\",\n        \"book_file\": \"http://localhost:8000/storage/book_files/xBYafXepGiGCojGos0wHd117YmY5skXiY65xCNWm.pdf\",\n        \"description\": \"Ini adalah buku biografi tentang perjalanan hidup saya\",\n        \"category_id\": \"95224\",\n        \"user_id\": 69383,\n        \"id\": 63122,\n        \"updated_at\": \"2024-12-08T14:35:47.000000Z\",\n        \"created_at\": \"2024-12-08T14:35:47.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "book_name",
+									"value": "ganti semuanyaa",
+									"description": "required, string, min 3 max 100, unique",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "required, mimes:jpg,jpeg,png,svg, max size 2048",
+									"type": "file",
+									"src": "/C:/Users/litle fox/Downloads/WhatsApp Image 2024-11-13 at 4.42.47 PM.jpeg"
+								},
+								{
+									"key": "book_file",
+									"description": "required, mimes:pdf,docx,pptx,txt",
+									"type": "file",
+									"src": "/C:/Users/litle fox/Downloads/untuk-latihan.pdf"
+								},
+								{
+									"key": "description",
+									"value": "ganti semuanya",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "95224",
+									"description": "required, integer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/books/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6312",
+									"description": "id book"
+								}
+							]
+						},
+						"description": "# edit book\n\nfield :\n\nbook_name with validation required, string, min 3, max 100, unique,\n\nimage wirh validation required, mimes:jpg, jpeg, png, svg max size 2048\n\nbook_file with validation required, mimes:pdf,docx,pptx,txt,\n\ndescription with validation required,\n\ncategory_id required, integer\n\nrequest params id required"
+					},
+					"response": [
+						{
+							"name": "Edit Book success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "book_name",
+											"value": "ganti semuanya",
+											"description": "required, string, min 3 max 100, unique",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "required, mimes:jpg,jpeg,png,svg, max size 2048",
+											"type": "file",
+											"src": "/C:/Users/litle fox/Downloads/WhatsApp Image 2024-11-13 at 4.42.47 PM.jpeg"
+										},
+										{
+											"key": "book_file",
+											"description": "required, mimes:pdf,docx,pptx,txt",
+											"type": "file",
+											"src": "/C:/Users/litle fox/Downloads/untuk-latihan.pdf"
+										},
+										{
+											"key": "description",
+											"value": "ganti semuanya",
+											"description": "required",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "95224",
+											"description": "required, integer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URI}}/books/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "63122",
+											"description": "id book"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:41:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Edit book successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": 63122,\n        \"book_name\": \"ganti semuanya\",\n        \"user_id\": 69383,\n        \"image\": \"http://localhost:8000/storage/book_images/94CWBjx4FQ70Ck2MHMCMf7WU8v9kuGbO00yuaK0f.jpg\",\n        \"book_file\": \"http://localhost:8000/storage/book_files/YXz1vc7kmSMHDkuLysXp5TxmFiypAxkYxA75qwkT.pdf\",\n        \"description\": \"ganti semuanya\",\n        \"category_id\": \"95224\",\n        \"created_at\": \"2024-12-08T14:35:47.000000Z\",\n        \"updated_at\": \"2024-12-08T14:41:29.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Edit Book failed id book not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "book_name",
+											"value": "ganti semuanyaa",
+											"description": "required, string, min 3 max 100, unique",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "required, mimes:jpg,jpeg,png,svg, max size 2048",
+											"type": "file",
+											"src": "/C:/Users/litle fox/Downloads/WhatsApp Image 2024-11-13 at 4.42.47 PM.jpeg"
+										},
+										{
+											"key": "book_file",
+											"description": "required, mimes:pdf,docx,pptx,txt",
+											"type": "file",
+											"src": "/C:/Users/litle fox/Downloads/untuk-latihan.pdf"
+										},
+										{
+											"key": "description",
+											"value": "ganti semuanya",
+											"description": "required",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "95224",
+											"description": "required, integer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URI}}/books/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6312",
+											"description": "id book"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:42:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/books/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63122",
+									"description": "id book"
+								}
+							]
+						},
+						"description": "# delete book\n\nrequest delet book only input id book"
+					},
+					"response": [
+						{
+							"name": "Delete Book success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "63122",
+											"description": "id book"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:44:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Delete book successfully\",\n    \"statusCode\": 200\n}"
+						},
+						{
+							"name": "Delete Book failed id book not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/books/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "63122",
+											"description": "id book"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:45:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoint Books provide 5 request\n\n- find all books\n    \n- fin detail book\n    \n- add book\n    \n- edit book\n    \n- delete book"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Find all categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/categories",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "ilmiah",
+									"description": "category_name",
+									"disabled": true
+								},
+								{
+									"key": "order-by",
+									"value": "desc",
+									"description": "only input asc or desc",
+									"disabled": true
+								}
+							]
+						},
+						"description": "# find all categories\n\nif not with request params find all categories will returned all data categoyr order by created_at asc\n\nif with request params find all categories will returned data category as requested paginate 10\n\nq as query search with specifiet search by category_name paginate 10\n\norder-by with specifiet only input asc or desc"
+					},
+					"response": [
+						{
+							"name": "Find all categories success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/categories",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "ilmiah",
+											"disabled": true
+										},
+										{
+											"key": "order-by",
+											"value": "desc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:47:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find all categories successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 50176,\n                \"category_name\": \"Biografi\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 61456,\n                \"category_name\": \"Komik\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 67599,\n                \"category_name\": \"Atlas\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 80101,\n                \"category_name\": \"Agama\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 84273,\n                \"category_name\": \"Novel\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 95224,\n                \"category_name\": \"Ilmiah\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/v1/categories?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/v1/categories?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/categories?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/v1/categories\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 6,\n        \"total\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Find Detail Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/categories/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5017",
+									"description": "id category"
+								}
+							]
+						},
+						"description": "# find detail category\n\nrequest find detail category only input id category"
+					},
+					"response": [
+						{
+							"name": "Find Detail Category success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "50176",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:54:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find detail category successfully\",\n    \"stautsCode\": 200,\n    \"data\": {\n        \"id\": 50176,\n        \"category_name\": \"Biografi\",\n        \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Find Detail Category failed id not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5017",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:56:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Category not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category_name\": \"coba category kedua\" // required, string, min 3, max 100, unique\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI}}/categories",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"categories"
+							]
+						},
+						"description": "# add category\n\nfield :\n\ncategory_name with validation required, string, min 3 max 100, unique\n\ncan add category only role admin"
+					},
+					"response": [
+						{
+							"name": "Add Category success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"coba category\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/categories",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:58:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Add category successfully\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"category_name\": \"coba category\",\n        \"id\": 99485,\n        \"updated_at\": \"2024-12-08T14:58:14.000000Z\",\n        \"created_at\": \"2024-12-08T14:58:14.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Add Category failed category_name alredy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"coba category\" // required, string, min 3, max 100, unique\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/categories",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 14:59:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"category_name\": [\n        \"The category name has already been taken.\"\n    ]\n}"
+						},
+						{
+							"name": "Add Category failed add role user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"coba category kedua\" // required, string, min 3, max 100, unique\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/categories",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:03:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"forbidden\",\n    \"statusCode\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category_name\": \"ganti categoryy\" // required, string, min 3 max 100, unique\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI}}/categories/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "99485",
+									"description": "id category"
+								}
+							]
+						},
+						"description": "# edit category\n\nfield :\n\ncategory_name with validation required, string min 3 max 100, unique\n\nrequest params id\n\ncan edit category only role admin"
+					},
+					"response": [
+						{
+							"name": "Edit Category success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"ganti category\" // required, string, min 3 max 100, unique\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "99485",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:08:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Edit category successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": 99485,\n        \"category_name\": \"ganti category\",\n        \"created_at\": \"2024-12-08T14:58:14.000000Z\",\n        \"updated_at\": \"2024-12-08T15:08:49.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Edit Category failed id not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"ganti categoryy\" // required, string, min 3 max 100, unique\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9948",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:09:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Category not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						},
+						{
+							"name": "Edit Category failed role user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_name\": \"ganti categoryy\" // required, string, min 3 max 100, unique\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "99485",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:11:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"forbidden\",\n    \"statusCode\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/categories/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "99485",
+									"description": "id category"
+								}
+							]
+						},
+						"description": "# delete category\n\nrequest delete category only input request params id category\n\ncan delete category only role admin"
+					},
+					"response": [
+						{
+							"name": "Delete Category failed role user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "99485",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:15:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"forbidden\",\n    \"statusCode\": 404\n}"
+						},
+						{
+							"name": "Delete Category success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "99485",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:16:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Delete category successfully\",\n    \"statusCode\": 200\n}"
+						},
+						{
+							"name": "Delete Category failed id not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/categories/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "99485",
+											"description": "id category"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 15:16:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Category not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoint Categories provide 5 request\n\n- find all categories\n    \n- find detail category\n    \n- add category\n    \n- edit category\n    \n- delete category"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Find All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/users?order-by=desc",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Miss Sibyl Robel Sr.",
+									"description": "search by name, email, role",
+									"disabled": true
+								},
+								{
+									"key": "order-by",
+									"value": "desc",
+									"description": "only input asc or desc"
+								}
+							]
+						},
+						"description": "# find all users\n\nrequest find all users only role admin can access\n\nquery params :\n\nq as query search, search by name, email, role\n\norder-by query order by created_at asc or desc"
+					},
+					"response": [
+						{
+							"name": "Find All Users success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Miss Sibyl Robel Sr.",
+											"disabled": true
+										},
+										{
+											"key": "order-by",
+											"value": "desc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 06:58:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find all users successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 10097,\n                \"name\": \"Miss Sibyl Robel Sr.\",\n                \"email\": \"kiarra.moore@example.com\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 13090,\n                \"name\": \"Kamren Fahey I\",\n                \"email\": \"evan11@example.net\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 27343,\n                \"name\": \"Abagail Kreiger\",\n                \"email\": \"wcassin@example.org\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 29432,\n                \"name\": \"Keenan Hoppe II\",\n                \"email\": \"soledad69@example.com\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 38509,\n                \"name\": \"Mrs. Magdalena Hahn\",\n                \"email\": \"krajcik.barry@example.org\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 61601,\n                \"name\": \"abimantra\",\n                \"email\": \"abimantra@gmail.com\",\n                \"email_verified_at\": null,\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-08T13:24:19.000000Z\",\n                \"updated_at\": \"2024-12-08T13:24:19.000000Z\"\n            },\n            {\n                \"id\": 66751,\n                \"name\": \"Elaina Christiansen\",\n                \"email\": \"reinger.evalyn@example.org\",\n                \"email_verified_at\": \"2024-12-07T09:04:45.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 69383,\n                \"name\": \"anggelika\",\n                \"email\": \"anggelika@gmail.com\",\n                \"email_verified_at\": null,\n                \"role\": \"admin\",\n                \"created_at\": \"2024-12-07T09:09:33.000000Z\",\n                \"updated_at\": \"2024-12-07T09:09:33.000000Z\"\n            },\n            {\n                \"id\": 75525,\n                \"name\": \"Mrs. Una Green\",\n                \"email\": \"jacey.schneider@example.org\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            },\n            {\n                \"id\": 75677,\n                \"name\": \"Ms. Brianne Jones V\",\n                \"email\": \"beatrice88@example.com\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/v1/users?page=1\",\n        \"from\": 1,\n        \"last_page\": 2,\n        \"last_page_url\": \"http://localhost:8000/api/v1/users?page=2\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/users?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/users?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": \"http://localhost:8000/api/v1/users?page=2\",\n        \"path\": \"http://localhost:8000/api/v1/users\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 10,\n        \"total\": 12\n    }\n}"
+						},
+						{
+							"name": "Find All Users success with query params",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users?q=Miss Sibyl Robel Sr.&order-by=desc",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Miss Sibyl Robel Sr."
+										},
+										{
+											"key": "order-by",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 06:59:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find all users successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 10097,\n                \"name\": \"Miss Sibyl Robel Sr.\",\n                \"email\": \"kiarra.moore@example.com\",\n                \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"role\": \"user\",\n                \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n                \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/v1/users?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/v1/users?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/v1/users\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 1,\n        \"total\": 1\n    }\n}"
+						},
+						{
+							"name": "Find All Users failed role user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users?q=Miss Sibyl Robel Sr.&order-by=desc",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Miss Sibyl Robel Sr."
+										},
+										{
+											"key": "order-by",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 06:59:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"forbidden\",\n    \"statusCode\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "Find Detail User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/users/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10096",
+									"description": "id user"
+								}
+							]
+						},
+						"description": "# find detail user\n\nthis request only input id user on quey params\n\nall role can access this request"
+					},
+					"response": [
+						{
+							"name": "Find Detail User success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "10097",
+											"description": "id user"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:04:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Find detail user successfully\",\n    \"stautsCode\": 200,\n    \"data\": {\n        \"id\": 10097,\n        \"name\": \"Miss Sibyl Robel Sr.\",\n        \"email\": \"kiarra.moore@example.com\",\n        \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"role\": \"user\",\n        \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"updated_at\": \"2024-12-07T09:04:46.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Find Detail User failed id not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "10096",
+											"description": "id user"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:05:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"User not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"azmya nadine\", // validate required, string, min 3 max 100,\r\n    \"email\": \"azmyas@gmail.com\", // validate required, email, unique,\r\n    \"password\": \"Azmya23#\", // validate required, string, min 8, confirmed, regex: a-z, A-Z, 0-9, !@#$%^&*\r\n    \"password_confirmation\": \"Azmya23#\", // required\r\n    \"role\": \"admin\" // required only input user or admin\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI}}/users",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "# add user\n\nfield :\n\nname with validate required, string, min 3 max 100,\n\nemail with validate required, email, unique,\n\npassword with validate required, string, min 8, confirmed, regex:a-z, A-Z, 0-9, !@#$%^&\\*\n\npassword_confirmation with validate required,\n\nrole : required only input user or admin\n\nonly admin can access this request"
+					},
+					"response": [
+						{
+							"name": "Add User success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"azmya nadine\",\r\n    \"email\": \"azmya@gmail.com\",\r\n    \"password\": \"Azmya23#\",\r\n    \"password_confirmation\": \"Azmya23#\",\r\n    \"role\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/users",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:12:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Add user successfully\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"name\": \"azmya nadine\",\n        \"email\": \"azmya@gmail.com\",\n        \"role\": \"admin\",\n        \"id\": 18082,\n        \"updated_at\": \"2024-12-09T07:12:49.000000Z\",\n        \"created_at\": \"2024-12-09T07:12:49.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Add User failed role user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"azmya nadine\", // validate required, string, min 3 max 100,\r\n    \"email\": \"azmyas@gmail.com\", // validate required, email, unique,\r\n    \"password\": \"Azmya23#\", // validate required, string, min 8, confirmed, regex: a-z, A-Z, 0-9, !@#$%^&*\r\n    \"password_confirmation\": \"Azmya23#\", // required\r\n    \"role\": \"admin\" // optional if not input default value is user\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/users",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:30:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"forbidden\",\n    \"statusCode\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user coba coba\", // validate required, string, min 3 max 100,\r\n    \"email\": \"cobacoba@gmail.com\", // validate required, email, unique,\r\n    \"password\": \"Coba123#\", // validate required, string, min 8, confirmed, regex: a-z, A-Z, 0-9, !@#$%^&*\r\n    \"password_confirmation\": \"Coba123#\", // required\r\n    \"role\": \"admin\" // only input user or admin\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI}}/users/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10097",
+									"description": "is user"
+								}
+							]
+						},
+						"description": "# edit user\n\nfield :\n\nname with validate required, string, min 3 max 100,\n\nemail with validate required, email, unique,\n\npassword with validate required, string, min 8, confirmed, regex:a-z, A-Z, 0-9, !@#$%^&\\*\n\npassword_confirmation with validate required,\n\nrole : required only input user or admin\n\nonly admin can access this request"
+					},
+					"response": [
+						{
+							"name": "Edit User failed role user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"user coba coba\", // validate required, string, min 3 max 100,\r\n    \"email\": \"cobacoba@gmail.com\", // validate required, email, unique,\r\n    \"password\": \"Coba123#\", // validate required, string, min 8, confirmed, regex: a-z, A-Z, 0-9, !@#$%^&*\r\n    \"password_confirmation\": \"Coba123#\", // required\r\n    \"role\": \"admin\" // only input user or admin\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "10097"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:37:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"forbidden\",\n    \"statusCode\": 404\n}"
+						},
+						{
+							"name": "Edit User success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"user coba coba\", // validate required, string, min 3 max 100,\r\n    \"email\": \"cobacoba@gmail.com\", // validate required, email, unique,\r\n    \"password\": \"Coba123#\", // validate required, string, min 8, confirmed, regex: a-z, A-Z, 0-9, !@#$%^&*\r\n    \"password_confirmation\": \"Coba123#\", // required\r\n    \"role\": \"admin\" // only input user or admin\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "10097"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:41:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Edit user successfully\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": 10097,\n        \"name\": \"user coba coba\",\n        \"email\": \"cobacoba@gmail.com\",\n        \"email_verified_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"role\": \"admin\",\n        \"created_at\": \"2024-12-07T09:04:46.000000Z\",\n        \"updated_at\": \"2024-12-09T07:41:22.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/users/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "18082"
+								}
+							]
+						},
+						"description": "# delete user\n\nthis request only input query params id user\n\nonly role admin can access this request"
+					},
+					"response": [
+						{
+							"name": "Delete User failed if user have a book in the table books",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "10097",
+											"description": "id user"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:44:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"An error ocurred SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`book_collection`.`books`, CONSTRAINT `books_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) (Connection: mysql, SQL: delete from `users` where `id` = 10097)\",\n    \"statusCode\": 409\n}"
+						},
+						{
+							"name": "Delete User success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "18082"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:46:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Delete user successfully\",\n    \"statusCode\": 200\n}"
+						},
+						{
+							"name": "Delete User failed id user not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{AUTH_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URI}}/users/:id",
+									"host": [
+										"{{URI}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "18082"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 07:46:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"User not found:(\",\n    \"statusCode\": 404,\n    \"data\": []\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoint users provide 5 request\n\n- find all users\n    \n- find detail user\n    \n- add user\n    \n- edit user\n    \n- delete user"
+		}
+	]
+}
