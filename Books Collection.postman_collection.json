@@ -3903,7 +3903,7 @@
 								}
 							]
 						},
-						"description": "# delete user\n\nthis request only input query params id user\n\nonly role admin can access this request"
+						"description": "# delete user\n\nthis request only input query params id user\n\nif role not admin and id user login not same id user with user id deleted forbidden"
 					},
 					"response": [
 						{
